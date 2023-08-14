@@ -39,7 +39,7 @@ const queryClient = new QueryClient({
   },
 })
 
-export default function App({ Component, pageProps }: AppProps) {
+const App = ({ Component, pageProps }: AppProps) => {
   const { push, pathname } = useRouter()
   const validateSession = async () => {
     const user = supabase.auth.user()
@@ -67,3 +67,4 @@ export default function App({ Component, pageProps }: AppProps) {
     </QueryClientProvider>
   )
 }
+export default App
