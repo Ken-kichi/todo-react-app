@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { ReactQueryDevtools } from 'react-query/devtools'
 import { supabase } from '../../utils/supabase'
-import { useEffect } from 'react'
+import { useEffect, ReactNode } from 'react'
 
 export function reportWebVitals(metric: NextWebVitalsMetric) {
   switch (metric.name) {
@@ -38,6 +38,12 @@ const queryClient = new QueryClient({
     },
   },
 })
+
+declare module 'react-query/types/react/QueryClientProvider' {
+  interface QueryClientProviderProps {
+    children?: ReactNode
+  }
+}
 
 const App = ({ Component, pageProps }: AppProps) => {
   const { push, pathname } = useRouter()
